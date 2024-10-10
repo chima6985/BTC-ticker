@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # bitcoin_ticker
 
 A new Flutter project.
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# BTC-ticker
+>>>>>>> dea5ae79d2222dacf878d1526e7f79bb924d6bab
