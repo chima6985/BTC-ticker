@@ -1,16 +1,40 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, library_private_types_in_public_api
+
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'coin_data.dart';
 
 class PriceScreen extends StatefulWidget {
+  const PriceScreen({super.key});
+
   @override
   _PriceScreenState createState() => _PriceScreenState();
 }
 
 class _PriceScreenState extends State<PriceScreen> {
+  String selectedCurrency = 'USD';
+
+  List<DropdownMenuItem<String>> getDropdownItems() {
+
+    List<DropdownMenuItem<String>> dropdownItems = [];
+
+    for(String currency in currenciesList) {
+      var newItem = DropdownMenuItem(
+        value: currency,
+        child: Text(currency)
+      );
+   dropdownItems.add(newItem);
+  }
+  return dropdownItems;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('🤑 Coin Ticker'),
+        backgroundColor: Colors.lightBlueAccent,
+        title: const Center(child: Text('🤑 Coin Ticker')),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,10 +66,45 @@ class _PriceScreenState extends State<PriceScreen> {
             alignment: Alignment.center,
             padding: const EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: null,
+            child: DropdownButton<String>(
+              value: selectedCurrency,
+              items: getDropdownItems(),
+              onChanged: (value) {
+                setState(() {
+                  log(selectedCurrency = value!);
+                });
+              },
+            ),
           ),
         ],
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// [
+//                 const DropdownMenuItem(
+//                   value: 'USD',
+//                   child: Text('USD'),
+//                 ),
+//                 const DropdownMenuItem(
+//                   value: 'EUR',
+//                   child: Text('EUR'),
+//                 ),
+//                 const DropdownMenuItem(
+//                   value: 'GBP',
+//                   child: Text('GBP'),
+//                 )
+//               ],
